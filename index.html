@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hammad Shamim | Senior Power BI & Fabric Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, #0078d4 0%, #002c5f 100%);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .section-title {
+            position: relative;
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #0078d4;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+
+<body class="text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md fixed w-full z-10">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-gray-800">Hammad<span class="text-blue-600">Shamim</span></a>
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="#about" class="text-gray-600 hover:text-blue-600 transition duration-300">About</a>
+                <a href="#services" class="text-gray-600 hover:text-blue-600 transition duration-300">Services</a>
+                <a href="#portfolio" class="text-gray-600 hover:text-blue-600 transition duration-300">Portfolio</a>
+                <a href="#contact" class="bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-700 transition duration-300">Contact Me</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white pb-4">
+            <a href="#about" class="block text-center py-2 text-gray-600 hover:text-blue-600 transition duration-300">About</a>
+            <a href="#services" class="block text-center py-2 text-gray-600 hover:text-blue-600 transition duration-300">Services</a>
+            <a href="#portfolio" class="block text-center py-2 text-gray-600 hover:text-blue-600 transition duration-300">Portfolio</a>
+            <a href="#contact" class="block text-center mt-2 mx-4 bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-700 transition duration-300">Contact Me</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg text-white pt-24 pb-16 md:pt-32 md:pb-24">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Hammad Shamim</h1>
+            <h2 class="text-2xl md:text-3xl font-semibold mb-4 text-gray-200">Senior Power BI & Microsoft Fabric Developer</h2>
+            <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-gray-300">Transforming complex data into actionable insights with 6+ years of experience in data engineering and analysis.</p>
+            <a href="#contact" class="bg-white text-blue-600 font-bold py-3 px-8 rounded-full text-lg hover:bg-gray-200 transition duration-300 transform hover:scale-105">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center section-title">About Me</h2>
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/3 text-center">
+                    <!-- IMPORTANT: Replace this placeholder with the actual path to your photo -->
+                    <img src="https://placehold.co/300x300/E2E8F0/4A5568?text=Hammad+Shamim" alt="Hammad Shamim" class="rounded-full shadow-lg mx-auto">
+                </div>
+                <div class="md:w-2/3">
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        I am a results-oriented Senior Power BI Developer with a proven history of leading and guiding reporting teams. With over 6 years of experience, I am adept at transforming complex data into actionable insights through advanced Power BI, Microsoft Fabric, and SQL skills.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        As a collaborative leader and mentor, I am passionate about enhancing team capabilities to create impactful dashboards and foster a data-driven culture. My goal is to architect and deliver scalable, maintainable, and high-performance analytics solutions that drive business value.
+                    </p>
+                    <div class="mt-6">
+                        <h3 class="text-xl font-semibold mb-2">Education</h3>
+                        <p class="text-gray-600"><i class="fas fa-graduation-cap mr-2 text-blue-600"></i>Masters in Data Science - N.E.D University, Pakistan</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center section-title">Core Competencies</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-8 rounded-lg shadow-md text-center card-hover transition duration-300">
+                    <div class="text-blue-600 text-5xl mb-4"><i class="fas fa-layer-group"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Microsoft Fabric Solutions</h3>
+                    <p class="text-gray-600">Architecting end-to-end analytics solutions, leveraging the full, unified power of Microsoft Fabric.</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-lg shadow-md text-center card-hover transition duration-300">
+                    <div class="text-blue-600 text-5xl mb-4"><i class="fas fa-chart-pie"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Advanced Power BI Reporting</h3>
+                    <p class="text-gray-600">Developing insightful, high-performance, and secure Power BI reports with optimized DAX and data models.</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-lg shadow-md text-center card-hover transition duration-300">
+                    <div class="text-blue-600 text-5xl mb-4"><i class="fas fa-cogs"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Data Engineering & Pipelines</h3>
+                    <p class="text-gray-600">Building robust data extraction frameworks and CI/CD pipelines for automated testing and deployment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications & Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center section-title">Skills & Certifications</h2>
+            <div class="max-w-4xl mx-auto">
+                <h3 class="text-2xl font-semibold text-center mb-6">Technical Skills</h3>
+                <div class="flex flex-wrap justify-center gap-4 mb-10">
+                    <span class="bg-blue-100 text-blue-800 text-lg font-semibold px-4 py-2 rounded-full">Microsoft Fabric</span>
+                    <span class="bg-blue-100 text-blue-800 text-lg font-semibold px-4 py-2 rounded-full">Power BI</span>
+                    <span class="bg-blue-100 text-blue-800 text-lg font-semibold px-4 py-2 rounded-full">SQL</span>
+                    <span class="bg-blue-100 text-blue-800 text-lg font-semibold px-4 py-2 rounded-full">Python</span>
+                    <span class="bg-blue-100 text-blue-800 text-lg font-semibold px-4 py-2 rounded-full">Data Modeling</span>
+                </div>
+                <h3 class="text-2xl font-semibold text-center mb-6">Licenses & Certifications</h3>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-center">
+                    <div class="bg-white p-4 rounded-lg shadow-md"><p class="font-medium"><i class="fas fa-certificate text-yellow-500 mr-2"></i>Microsoft Power BI Data Analyst (PL-300)</p></div>
+                    <div class="bg-white p-4 rounded-lg shadow-md"><p class="font-medium"><i class="fas fa-certificate text-yellow-500 mr-2"></i>Google Cloud Professional Data Engineer</p></div>
+                    <div class="bg-white p-4 rounded-lg shadow-md"><p class="font-medium"><i class="fas fa-certificate text-yellow-500 mr-2"></i>Microsoft Azure Data Fundamentals (DP-900)</p></div>
+                    <div class="bg-white p-4 rounded-lg shadow-md"><p class="font-medium"><i class="fas fa-certificate text-yellow-500 mr-2"></i>Datacamp Associate Data Engineer</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center section-title">Client Engagements</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover transition duration-300 flex flex-col">
+                    <img src="https://placehold.co/600x400/0078D4/FFFFFF?text=Retail+Analytics" alt="Swiss Arabian Perfume Group Project" class="w-full h-48 object-cover">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold mb-2">Lead Developer at Swiss Arabian Perfume Group</h3>
+                        <p class="text-gray-600 mb-4 flex-grow">Led a team to deliver 80+ reports for retail and production. Architected a shared semantic model with Git/TMDL for version control and deployed a multi-layered RLS/OLS security framework.</p>
+                        <div class="mt-auto">
+                           <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Microsoft Fabric</span>
+                           <span class="inline-block bg-gray-200 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">CI/CD</span>
+                           <span class="inline-block bg-gray-200 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">DAX</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover transition duration-300 flex flex-col">
+                    <img src="https://placehold.co/600x400/002C5F/FFFFFF?text=Automotive+BI" alt="America's Car Mart Project" class="w-full h-48 object-cover">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold mb-2">BI & Snowflake Dev at America's Car Mart</h3>
+                        <p class="text-gray-600 mb-4 flex-grow">Developed comprehensive reporting solutions on key operational metrics including lot activity, net sales, and customer engagement, enhancing data-driven decision-making for stakeholders.</p>
+                        <div class="mt-auto">
+                            <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Power BI</span>
+                            <span class="inline-block bg-gray-200 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Snowflake</span>
+                            <span class="inline-block bg-gray-200 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Stakeholder Mngmt</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover transition duration-300 flex flex-col">
+                    <img src="https://placehold.co/600x400/333333/FFFFFF?text=Utilities+Dashboards" alt="Aqaba Water Project" class="w-full h-48 object-cover">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold mb-2">Power BI Developer at Aqaba Water</h3>
+                        <p class="text-gray-600 mb-4 flex-grow">Delivered actionable insights through comprehensive Power BI reports focusing on overtime tracking, asset history, and sales performance, using advanced data modeling and visualization.</p>
+                        <div class="mt-auto">
+                            <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Power BI</span>
+                            <span class="inline-block bg-gray-200 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Data Modeling</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center section-title">Contact Me</h2>
+            <p class="text-center max-w-2xl mx-auto mb-10 text-gray-600">I'm currently available for new opportunities. If you have a project in mind or just want to connect, feel free to send me a message.</p>
+            <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+                <form action="#" method="POST" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                        <input type="text" name="name" id="name" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                        <input type="email" name="email" id="email" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                        <textarea name="message" id="message" rows="4" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="w-full md:w-auto bg-blue-600 text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-blue-700 transition duration-300">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-10">
+        <div class="container mx-auto px-6 text-center text-gray-400">
+             <div class="flex justify-center items-center space-x-6 mb-4">
+                <a href="mailto:Hammadshamim642@gmail.com" class="hover:text-blue-400 transition duration-300"><i class="fas fa-envelope mr-1"></i> Hammadshamim642@gmail.com</a>
+                <span>|</span>
+                <a href="tel:+923482428620" class="hover:text-blue-400 transition duration-300"><i class="fas fa-phone mr-1"></i> +92 348 2428620</a>
+            </div>
+            <div class="flex justify-center space-x-6 mb-6">
+                <!-- IMPORTANT: Replace '#' with your actual profile URLs -->
+                <a href="#" class="text-2xl hover:text-blue-400 transition duration-300"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="text-2xl hover:text-blue-400 transition duration-300"><i class="fab fa-github"></i></a>
+            </div>
+            <p>&copy; 2025 Hammad Shamim. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
+
