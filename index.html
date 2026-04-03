@@ -7,23 +7,72 @@
     <title>Hammad Shamim | Full Stack Data Professional</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                        },
+                        cyan: {
+                            400: '#22d3ee',
+                            500: '#06b6d4',
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0f2f5;
+            background-color: #0f172a;
+            color: #f8fafc;
         }
-        .hero-bg {
-            background: linear-gradient(135deg, #0078d4 0%, #002c5f 100%);
+        
+        /* Glassmorphism Classes */
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
-        .card-hover:hover {
+        .glass-card {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .glass-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 40px rgba(6, 182, 212, 0.15);
+            border-color: rgba(6, 182, 212, 0.3);
         }
+
         .section-title {
             position: relative;
             padding-bottom: 0.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
         }
         .section-title::after {
             content: '';
@@ -33,193 +82,230 @@
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background-color: #0078d4;
+            background: linear-gradient(90deg, #06b6d4, #3b82f6);
             border-radius: 2px;
+            box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
         }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+        
+        .carousel-card { cursor: pointer; }
     </style>
 </head>
 
-<body class="text-gray-800">
+<body class="text-slate-300 overflow-x-hidden selection:bg-cyan-500 selection:text-white pb-10 md:pb-0">
 
     <!-- Header -->
-    <header class="bg-white shadow-md fixed w-full z-10">
+    <header class="glass-nav fixed w-full z-50 transition-all duration-300" id="navbar">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-gray-800">Hammad<span class="text-blue-600">Shamim</span></a>
-            <div class="hidden md:flex space-x-6 items-center">
-                <a href="#about" class="text-gray-600 hover:text-blue-600 transition duration-300">About</a>
-                <a href="#services" class="text-gray-600 hover:text-blue-600 transition duration-300">Services</a>
-                <a href="#portfolio" class="text-gray-600 hover:text-blue-600 transition duration-300">Portfolio</a>
-                <a href="#contact" class="bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-700 transition duration-300">Contact Me</a>
+            <a href="#" class="text-2xl font-bold text-white tracking-tight">Hammad<span class="text-cyan-400">Shamim</span></a>
+            <div class="hidden md:flex space-x-8 items-center text-sm font-medium">
+                <a href="#about" class="text-slate-300 hover:text-cyan-400 transition duration-300">About</a>
+                <a href="#services" class="text-slate-300 hover:text-cyan-400 transition duration-300">Services</a>
+                <a href="#portfolio" class="text-slate-300 hover:text-cyan-400 transition duration-300">Portfolio</a>
+                <a href="#contact" class="bg-cyan-500 text-slate-900 py-2 px-6 rounded-full hover:bg-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.3)] hover:shadow-[0_0_25px_rgba(6,182,212,0.6)] transition-all duration-300 font-bold">Contact Me</a>
             </div>
-            <button id="mobile-menu-button" class="md:hidden text-2xl">
+            <button id="mobile-menu-button" class="md:hidden text-2xl text-slate-200 focus:outline-none">
                 <i class="fas fa-bars"></i>
             </button>
         </nav>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white pb-4">
-            <a href="#about" class="block text-center py-2 text-gray-600 hover:text-blue-600 transition duration-300">About</a>
-            <a href="#services" class="block text-center py-2 text-gray-600 hover:text-blue-600 transition duration-300">Services</a>
-            <a href="#portfolio" class="block text-center py-2 text-gray-600 hover:text-blue-600 transition duration-300">Portfolio</a>
-            <a href="#contact" class="block text-center mt-2 mx-4 bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-700 transition duration-300">Contact Me</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-800 border-t border-white/10 pb-4 shadow-xl absolute w-full">
+            <a href="#about" class="block text-center py-3 text-slate-300 hover:bg-slate-700 hover:text-cyan-400 transition duration-300">About</a>
+            <a href="#services" class="block text-center py-3 text-slate-300 hover:bg-slate-700 hover:text-cyan-400 transition duration-300">Services</a>
+            <a href="#portfolio" class="block text-center py-3 text-slate-300 hover:bg-slate-700 hover:text-cyan-400 transition duration-300">Portfolio</a>
+            <a href="#contact" class="block text-center mt-2 mx-6 bg-cyan-500 text-slate-900 py-3 rounded-full hover:bg-cyan-400 font-bold transition duration-300 shadow-[0_0_15px_rgba(6,182,212,0.4)]">Contact Me</a>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-bg text-white pt-24 pb-16 md:pt-32 md:pb-24">
-        <div class="container mx-auto px-6 text-center">
-            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Hammad Shamim</h1>
-            <h2 class="text-2xl md:text-3xl font-semibold mb-4 text-gray-200">Full Stack Data Professional</h2>
-            <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-gray-300">Transforming complex data into actionable insights with 8+ years of experience in data engineering and analysis.</p>
-            <a href="#contact" class="bg-white text-blue-600 font-bold py-3 px-8 rounded-full text-lg hover:bg-gray-200 transition duration-300 transform hover:scale-105">Get In Touch</a>
+    <section class="relative min-h-[90vh] flex items-center pt-24 overflow-hidden">
+        <!-- Glowing Ambient Orbs -->
+        <div class="absolute top-20 left-1/4 w-[400px] h-[400px] bg-cyan-500/20 rounded-full mix-blend-screen filter blur-[100px] animate-blob z-0 pointer-events-none"></div>
+        <div class="absolute top-40 right-1/4 w-[400px] h-[400px] bg-blue-600/20 rounded-full mix-blend-screen filter blur-[100px] animate-blob animation-delay-2000 z-0 pointer-events-none"></div>
+        
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <div class="reveal active">
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-4 tracking-tight text-white drop-shadow-lg">Hammad Shamim</h1>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Full Stack Data Professional</h2>
+                <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto text-slate-400 leading-relaxed">Transforming complex data into actionable insights with 8+ years of experience in data engineering and analysis.</p>
+                <a href="#contact" class="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold py-4 px-10 rounded-full text-lg shadow-[0_0_25px_rgba(6,182,212,0.4)] hover:shadow-[0_0_40px_rgba(6,182,212,0.7)] hover:-translate-y-1 transition-all duration-300 border border-cyan-400/50">Get In Touch</a>
+            </div>
         </div>
     </section>
 
     <!-- About Me Section -->
-    <section id="about" class="py-20">
+    <section id="about" class="py-24 relative z-10">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center section-title">About Me</h2>
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                <div class="md:w-1/3 text-center">
-                    <!-- IMPORTANT: Replace this placeholder with the actual path to your photo -->
-                    <img src="pp.png" alt="Hammad Shamim" class="rounded-full shadow-lg mx-auto">
+            <h2 class="text-3xl md:text-5xl font-bold text-center text-white mb-16 section-title reveal">About Me</h2>
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="md:w-1/3 text-center relative reveal">
+                    <div class="absolute inset-0 bg-cyan-500 rounded-full filter blur-[60px] opacity-20 animate-pulse"></div>
+                    <img src="pp.png" alt="Hammad Shamim" class="relative rounded-full shadow-[0_0_30px_rgba(0,0,0,0.8)] mx-auto w-64 h-64 object-cover border-4 border-slate-800 animate-float z-10">
                 </div>
-                <div class="md:w-2/3">
-                    <p class="text-gray-600 leading-relaxed mb-4">
-                        I am a results-oriented Full Stack Data Professional with a proven history of leading and guiding reporting teams. With over 8+ years of experience, I am adept at transforming complex data into actionable insights through advanced Power BI, Microsoft Fabric, and SQL skills.
+                <div class="md:w-2/3 reveal">
+                    <p class="text-slate-300 text-lg leading-relaxed mb-6">
+                        I am a results-oriented <span class="text-cyan-400 font-semibold">Full Stack Data Professional</span> with a proven history of leading and guiding reporting teams. With over <span class="text-white font-bold">8+ years of experience</span>, I am adept at transforming complex data into actionable insights through advanced Power BI, Microsoft Fabric, and SQL skills.
                     </p>
-                    <p class="text-gray-600 leading-relaxed mb-4">
+                    <p class="text-slate-300 text-lg leading-relaxed mb-4">
                         As a collaborative leader and mentor, I am passionate about enhancing team capabilities to create impactful dashboards and foster a data-driven culture. My goal is to architect and deliver scalable, maintainable, and high-performance analytics solutions that drive business value.
                     </p>
-
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-20 bg-white">
+    <section id="services" class="py-24 relative">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center section-title">Core Competencies</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-gray-50 p-8 rounded-lg shadow-md text-center card-hover transition duration-300">
-                    <div class="text-blue-600 text-5xl mb-4"><i class="fas fa-layer-group"></i></div>
-                    <h3 class="text-xl font-bold mb-2">Microsoft Fabric Solutions</h3>
-                    <p class="text-gray-600">Architecting end-to-end analytics solutions, leveraging the full, unified power of Microsoft Fabric.</p>
+            <h2 class="text-3xl md:text-5xl font-bold text-center text-white mb-16 section-title reveal">Core Competencies</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-card p-10 rounded-2xl text-center reveal">
+                    <div class="text-cyan-400 text-6xl mb-6 drop-shadow-[0_0_15px_rgba(34,211,238,0.5)]"><i class="fas fa-layer-group"></i></div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Microsoft Fabric Solutions</h3>
+                    <p class="text-slate-400 text-lg leading-relaxed">Architecting end-to-end analytics solutions, leveraging the full, unified power of Microsoft Fabric.</p>
                 </div>
-                <div class="bg-gray-50 p-8 rounded-lg shadow-md text-center card-hover transition duration-300">
-                    <div class="text-blue-600 text-5xl mb-4"><i class="fas fa-chart-pie"></i></div>
-                    <h3 class="text-xl font-bold mb-2">Advanced Power BI Reporting</h3>
-                    <p class="text-gray-600">Developing insightful, high-performance, and secure Power BI reports with optimized DAX and data models.</p>
+                <div class="glass-card p-10 rounded-2xl text-center reveal" style="transition-delay: 100ms;">
+                    <div class="text-cyan-400 text-6xl mb-6 drop-shadow-[0_0_15px_rgba(34,211,238,0.5)]"><i class="fas fa-chart-pie"></i></div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Advanced Power BI Reporting</h3>
+                    <p class="text-slate-400 text-lg leading-relaxed">Developing insightful, high-performance, and secure Power BI reports with optimized DAX and data models.</p>
                 </div>
-                <div class="bg-gray-50 p-8 rounded-lg shadow-md text-center card-hover transition duration-300">
-                    <div class="text-blue-600 text-5xl mb-4"><i class="fas fa-cogs"></i></div>
-                    <h3 class="text-xl font-bold mb-2">Data Engineering & Pipelines</h3>
-                    <p class="text-gray-600">Building robust data extraction frameworks and CI/CD pipelines for automated testing and deployment.</p>
+                <div class="glass-card p-10 rounded-2xl text-center reveal" style="transition-delay: 200ms;">
+                    <div class="text-cyan-400 text-6xl mb-6 drop-shadow-[0_0_15px_rgba(34,211,238,0.5)]"><i class="fas fa-cogs"></i></div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Data Engineering & Pipelines</h3>
+                    <p class="text-slate-400 text-lg leading-relaxed">Building robust data extraction frameworks and CI/CD pipelines for automated testing and deployment.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Certifications & Skills Section -->
-    <section id="skills" class="py-20">
+    <section id="skills" class="py-24 relative z-10">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center section-title">Skills & Certifications</h2>
+            <h2 class="text-3xl md:text-5xl font-bold text-center text-white mb-16 section-title reveal">Skills & Certifications</h2>
             <div class="max-w-4xl mx-auto">
-                <h3 class="text-2xl font-semibold text-center mb-6">Technical Skills</h3>
-                <div class="flex flex-wrap justify-center gap-4 mb-10">
-                    <span class="bg-blue-100 text-blue-800 text-lg font-semibold px-4 py-2 rounded-full">Microsoft Fabric</span>
-                    <span class="bg-blue-100 text-blue-800 text-lg font-semibold px-4 py-2 rounded-full">Power BI</span>
-                    <span class="bg-blue-100 text-blue-800 text-lg font-semibold px-4 py-2 rounded-full">SQL</span>
-                    <span class="bg-blue-100 text-blue-800 text-lg font-semibold px-4 py-2 rounded-full">Python</span>
-                    <span class="bg-blue-100 text-blue-800 text-lg font-semibold px-4 py-2 rounded-full">Data Modeling</span>
+                <h3 class="text-2xl font-bold text-center mb-8 text-cyan-400 reveal">Technical Skills</h3>
+                <div class="flex flex-wrap justify-center gap-4 mb-16 reveal">
+                    <span class="bg-slate-800 text-cyan-300 border border-cyan-500/30 text-lg font-medium px-6 py-3 rounded-full shadow-[0_0_10px_rgba(6,182,212,0.1)] hover:border-cyan-400 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all cursor-default">Microsoft Fabric</span>
+                    <span class="bg-slate-800 text-cyan-300 border border-cyan-500/30 text-lg font-medium px-6 py-3 rounded-full shadow-[0_0_10px_rgba(6,182,212,0.1)] hover:border-cyan-400 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all cursor-default">Power BI</span>
+                    <span class="bg-slate-800 text-cyan-300 border border-cyan-500/30 text-lg font-medium px-6 py-3 rounded-full shadow-[0_0_10px_rgba(6,182,212,0.1)] hover:border-cyan-400 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all cursor-default">SQL</span>
+                    <span class="bg-slate-800 text-cyan-300 border border-cyan-500/30 text-lg font-medium px-6 py-3 rounded-full shadow-[0_0_10px_rgba(6,182,212,0.1)] hover:border-cyan-400 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all cursor-default">Python</span>
+                    <span class="bg-slate-800 text-cyan-300 border border-cyan-500/30 text-lg font-medium px-6 py-3 rounded-full shadow-[0_0_10px_rgba(6,182,212,0.1)] hover:border-cyan-400 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all cursor-default">Data Modeling</span>
                 </div>
-                <h3 class="text-2xl font-semibold text-center mb-6">Licenses & Certifications</h3>
-                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-center">
-                    <div class="bg-white p-4 rounded-lg shadow-md"><p class="font-medium"><i class="fas fa-certificate text-yellow-500 mr-2"></i>Microsoft Power BI Data Analyst (PL-300)</p></div>
-                    <div class="bg-white p-4 rounded-lg shadow-md"><p class="font-medium"><i class="fas fa-certificate text-yellow-500 mr-2"></i>Google Cloud Professional Data Engineer</p></div>
-                    <div class="bg-white p-4 rounded-lg shadow-md"><p class="font-medium"><i class="fas fa-certificate text-yellow-500 mr-2"></i>Microsoft Azure Data Fundamentals (DP-900)</p></div>
-                    <div class="bg-white p-4 rounded-lg shadow-md"><p class="font-medium"><i class="fas fa-certificate text-yellow-500 mr-2"></i>Datacamp Associate Data Engineer</p></div>
+                
+                <h3 class="text-2xl font-bold text-center mb-8 text-cyan-400 reveal">Licenses & Certifications</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-center reveal">
+                    <div class="glass-card p-6 rounded-xl flex items-center justify-center gap-3">
+                        <i class="fas fa-certificate text-yellow-400 text-xl drop-shadow-[0_0_5px_rgba(250,204,21,0.5)]"></i>
+                        <p class="font-medium text-slate-200">Microsoft Power BI Data Analyst (PL-300)</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-xl flex items-center justify-center gap-3">
+                        <i class="fas fa-certificate text-yellow-400 text-xl drop-shadow-[0_0_5px_rgba(250,204,21,0.5)]"></i>
+                        <p class="font-medium text-slate-200">Google Cloud Professional Data Engineer</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-xl flex items-center justify-center gap-3">
+                        <i class="fas fa-certificate text-yellow-400 text-xl drop-shadow-[0_0_5px_rgba(250,204,21,0.5)]"></i>
+                        <p class="font-medium text-slate-200">Microsoft Azure Data Fundamentals (DP-900)</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-xl flex items-center justify-center gap-3">
+                        <i class="fas fa-certificate text-yellow-400 text-xl drop-shadow-[0_0_5px_rgba(250,204,21,0.5)]"></i>
+                        <p class="font-medium text-slate-200">Datacamp Associate Data Engineer</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="py-20 bg-white">
+    <section id="portfolio" class="py-24 relative overflow-hidden">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center section-title">Client Engagements</h2>
-            <div class="relative w-full max-w-5xl mx-auto px-4 mt-12" style="perspective: 1200px;">
+            <h2 class="text-3xl md:text-5xl font-bold text-center text-white mb-10 section-title reveal">Client Engagements</h2>
+            <div class="relative w-full max-w-5xl mx-auto px-4 mt-12 reveal" style="perspective: 1200px;">
                 <div id="carousel-track" class="relative w-full h-[550px] md:h-[480px]">
                     <div class="carousel-card absolute top-0 left-1/2 w-[90%] md:w-[60%] lg:w-[50%] h-full transition-all duration-700 ease-in-out">
-                        <div class="bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col w-full h-full">
-                            <div class="w-full h-48 bg-gradient-to-r from-blue-500 to-blue-700 flex items-center justify-center p-6 text-center text-white text-2xl font-bold">
+                        <div class="glass-card rounded-2xl overflow-hidden flex flex-col w-full h-full border border-white/10">
+                            <div class="w-full h-48 bg-gradient-to-br from-cyan-600 to-blue-800 flex items-center justify-center p-6 text-center text-white text-2xl font-bold shadow-inner">
                                 Swiss Arabian Perfume Group
                             </div>
-                            <div class="p-6 flex flex-col flex-grow">
-                                <h3 class="text-xl font-bold mb-2">Lead Developer at Swiss Arabian Perfume Group</h3>
-                                <p class="text-gray-600 mb-4 flex-grow">Led a team to deliver 80+ reports for retail and production. Architected a shared semantic model with Git/TMDL for version control and deployed a multi-layered RLS/OLS security framework.</p>
+                            <div class="p-6 flex flex-col flex-grow bg-slate-800/50">
+                                <h3 class="text-xl font-bold mb-2 text-white">Lead Developer at Swiss Arabian Perfume Group</h3>
+                                <p class="text-slate-400 mb-4 flex-grow">Led a team to deliver 80+ reports for retail and production. Architected a shared semantic model with Git/TMDL for version control and deployed a multi-layered RLS/OLS security framework.</p>
                                 <div class="mt-auto">
-                                   <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Microsoft Fabric</span>
-                                   <span class="inline-block bg-gray-200 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">CI/CD</span>
-                                   <span class="inline-block bg-gray-200 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">DAX</span>
+                                   <span class="inline-block bg-slate-700 text-cyan-300 border border-cyan-500/30 text-xs font-semibold mr-2 px-3 py-1 rounded-full">Microsoft Fabric</span>
+                                   <span class="inline-block bg-slate-700 text-slate-300 border border-slate-600 text-xs font-semibold mr-2 px-3 py-1 rounded-full">CI/CD</span>
+                                   <span class="inline-block bg-slate-700 text-slate-300 border border-slate-600 text-xs font-semibold mr-2 px-3 py-1 rounded-full">DAX</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="carousel-card absolute top-0 left-1/2 w-[90%] md:w-[60%] lg:w-[50%] h-full transition-all duration-700 ease-in-out">
-                        <div class="bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col w-full h-full">
-                            <div class="w-full h-48 bg-gradient-to-r from-blue-700 to-blue-900 flex items-center justify-center p-6 text-center text-white text-2xl font-bold">
+                        <div class="glass-card rounded-2xl overflow-hidden flex flex-col w-full h-full border border-white/10">
+                            <div class="w-full h-48 bg-gradient-to-br from-indigo-600 to-purple-800 flex items-center justify-center p-6 text-center text-white text-2xl font-bold shadow-inner">
                                 America's Car Mart
                             </div>
-                            <div class="p-6 flex flex-col flex-grow">
-                                <h3 class="text-xl font-bold mb-2">BI & Snowflake Dev at America's Car Mart</h3>
-                                <p class="text-gray-600 mb-4 flex-grow">Developed comprehensive reporting solutions on key operational metrics including lot activity, net sales, and customer engagement, enhancing data-driven decision-making for stakeholders.</p>
+                            <div class="p-6 flex flex-col flex-grow bg-slate-800/50">
+                                <h3 class="text-xl font-bold mb-2 text-white">BI & Snowflake Dev at America's Car Mart</h3>
+                                <p class="text-slate-400 mb-4 flex-grow">Developed comprehensive reporting solutions on key operational metrics including lot activity, net sales, and customer engagement, enhancing data-driven decision-making for stakeholders.</p>
                                 <div class="mt-auto">
-                                    <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Power BI</span>
-                                    <span class="inline-block bg-gray-200 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Snowflake</span>
-                                    <span class="inline-block bg-gray-200 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Stakeholder Management</span>
+                                    <span class="inline-block bg-slate-700 text-cyan-300 border border-cyan-500/30 text-xs font-semibold mr-2 px-3 py-1 rounded-full">Power BI</span>
+                                    <span class="inline-block bg-slate-700 text-slate-300 border border-slate-600 text-xs font-semibold mr-2 px-3 py-1 rounded-full">Snowflake</span>
+                                    <span class="inline-block bg-slate-700 text-slate-300 border border-slate-600 text-xs font-semibold mr-2 px-3 py-1 rounded-full">Stakeholder Management</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="carousel-card absolute top-0 left-1/2 w-[90%] md:w-[60%] lg:w-[50%] h-full transition-all duration-700 ease-in-out">
-                        <div class="bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col w-full h-full">
-                            <div class="w-full h-48 bg-gradient-to-r from-blue-600 to-blue-800 flex items-center justify-center p-6 text-center text-white text-2xl font-bold">
+                        <div class="glass-card rounded-2xl overflow-hidden flex flex-col w-full h-full border border-white/10">
+                            <div class="w-full h-48 bg-gradient-to-br from-teal-600 to-emerald-800 flex items-center justify-center p-6 text-center text-white text-2xl font-bold shadow-inner">
                                 Aqaba Water
                             </div>
-                            <div class="p-6 flex flex-col flex-grow">
-                                <h3 class="text-xl font-bold mb-2">Power BI Developer at Aqaba Water</h3>
-                                <p class="text-gray-600 mb-4 flex-grow">Delivered actionable insights through comprehensive Power BI reports focusing on overtime tracking, asset history, and sales performance, using advanced data modeling and visualization.</p>
+                            <div class="p-6 flex flex-col flex-grow bg-slate-800/50">
+                                <h3 class="text-xl font-bold mb-2 text-white">Power BI Developer at Aqaba Water</h3>
+                                <p class="text-slate-400 mb-4 flex-grow">Delivered actionable insights through comprehensive Power BI reports focusing on overtime tracking, asset history, and sales performance, using advanced data modeling and visualization.</p>
                                 <div class="mt-auto">
-                                    <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Power BI</span>
-                                    <span class="inline-block bg-gray-200 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Data Modeling</span>
+                                    <span class="inline-block bg-slate-700 text-cyan-300 border border-cyan-500/30 text-xs font-semibold mr-2 px-3 py-1 rounded-full">Power BI</span>
+                                    <span class="inline-block bg-slate-700 text-slate-300 border border-slate-600 text-xs font-semibold mr-2 px-3 py-1 rounded-full">Data Modeling</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="carousel-card absolute top-0 left-1/2 w-[90%] md:w-[60%] lg:w-[50%] h-full transition-all duration-700 ease-in-out">
-                        <div class="bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col w-full h-full">
-                            <div class="w-full h-48 bg-gradient-to-r from-blue-500 to-blue-800 flex items-center justify-center p-6 text-center text-white text-2xl font-bold">
+                        <div class="glass-card rounded-2xl overflow-hidden flex flex-col w-full h-full border border-white/10">
+                            <div class="w-full h-48 bg-gradient-to-br from-blue-600 to-cyan-800 flex items-center justify-center p-6 text-center text-white text-2xl font-bold shadow-inner">
                                 Almajdouie Motors
                             </div>
-                            <div class="p-6 flex flex-col flex-grow">
-                                <h3 class="text-xl font-bold mb-2">Data Engineer / BI Developer at Almajdouie Motors</h3>
-                                <p class="text-gray-600 mb-4 flex-grow">Created and maintained robust semantic models and ETL jobs, streamlining data workflows to ensure highly available, scalable analytics solutions.</p>
+                            <div class="p-6 flex flex-col flex-grow bg-slate-800/50">
+                                <h3 class="text-xl font-bold mb-2 text-white">Data Engineer / BI Developer at Almajdouie Motors</h3>
+                                <p class="text-slate-400 mb-4 flex-grow">Created and maintained robust semantic models and ETL jobs, streamlining data workflows to ensure highly available, scalable analytics solutions.</p>
                                 <div class="mt-auto">
-                                    <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Microsoft Fabric</span>
-                                    <span class="inline-block bg-gray-200 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Power BI</span>
-                                    <span class="inline-block bg-gray-200 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Delta Lake</span>
+                                    <span class="inline-block bg-slate-700 text-cyan-300 border border-cyan-500/30 text-xs font-semibold mr-2 px-3 py-1 rounded-full">Microsoft Fabric</span>
+                                    <span class="inline-block bg-slate-700 text-cyan-300 border border-cyan-500/30 text-xs font-semibold mr-2 px-3 py-1 rounded-full">Power BI</span>
+                                    <span class="inline-block bg-slate-700 text-slate-300 border border-slate-600 text-xs font-semibold mr-2 px-3 py-1 rounded-full">Delta Lake</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="flex justify-center space-x-6 mt-8 relative z-20">
-                    <button id="prevBtn" class="bg-white text-blue-600 rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:bg-gray-100 hover:scale-110 transition duration-300">
-                        <i class="fas fa-chevron-left text-xl"></i>
+                <!-- 3D Carousel Arrows -->
+                <div class="flex justify-center space-x-8 mt-12 relative z-20">
+                    <button id="prevBtn" class="bg-slate-800 border border-slate-600 text-cyan-400 rounded-full w-14 h-14 flex items-center justify-center shadow-[0_0_15px_rgba(6,182,212,0.2)] hover:bg-slate-700 hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] hover:-translate-y-1 transition duration-300">
+                        <i class="fas fa-chevron-left text-2xl"></i>
                     </button>
-                    <button id="nextBtn" class="bg-white text-blue-600 rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:bg-gray-100 hover:scale-110 transition duration-300">
-                        <i class="fas fa-chevron-right text-xl"></i>
+                    <button id="nextBtn" class="bg-slate-800 border border-slate-600 text-cyan-400 rounded-full w-14 h-14 flex items-center justify-center shadow-[0_0_15px_rgba(6,182,212,0.2)] hover:bg-slate-700 hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] hover:-translate-y-1 transition duration-300">
+                        <i class="fas fa-chevron-right text-2xl"></i>
                     </button>
                 </div>
             </div>
@@ -227,26 +313,26 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center section-title">Contact Me</h2>
-            <p class="text-center max-w-2xl mx-auto mb-10 text-gray-600">I'm currently available for new opportunities. If you have a project in mind or just want to connect, feel free to send me a message.</p>
-            <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+    <section id="contact" class="py-24 relative z-10 border-t border-white/5">
+        <div class="container mx-auto px-6 reveal">
+            <h2 class="text-3xl md:text-5xl font-bold text-center text-white mb-10 section-title">Let's Connect</h2>
+            <p class="text-center max-w-2xl mx-auto mb-12 text-slate-400 text-lg">I'm currently available for new opportunities. If you have a project in mind or just want to connect, feel free to send me a message.</p>
+            <div class="max-w-2xl mx-auto glass-card p-10 rounded-2xl">
                 <form action="https://formspree.io/f/mzzjonpw" method="POST" class="space-y-6">
                     <div>
-                        <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
-                        <input type="text" name="name" id="name" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                        <label for="name" class="block text-sm font-medium text-slate-300 mb-2">Full Name</label>
+                        <input type="text" name="name" id="name" required class="block w-full px-5 py-3 bg-slate-800/50 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all">
                     </div>
                     <div>
-                        <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
-                        <input type="email" name="email" id="email" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                        <label for="email" class="block text-sm font-medium text-slate-300 mb-2">Email Address</label>
+                        <input type="email" name="email" id="email" required class="block w-full px-5 py-3 bg-slate-800/50 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all">
                     </div>
                     <div>
-                        <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-                        <textarea name="message" id="message" rows="4" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"></textarea>
+                        <label for="message" class="block text-sm font-medium text-slate-300 mb-2">Message</label>
+                        <textarea name="message" id="message" rows="5" required class="block w-full px-5 py-3 bg-slate-800/50 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all"></textarea>
                     </div>
-                    <div class="text-center">
-                        <button type="submit" class="w-full md:w-auto bg-blue-600 text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-blue-700 transition duration-300">Send Message</button>
+                    <div class="text-center pt-2">
+                        <button type="submit" class="w-full md:w-auto bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold py-3 px-12 rounded-full text-lg shadow-[0_0_15px_rgba(6,182,212,0.4)] hover:shadow-[0_0_25px_rgba(6,182,212,0.6)] hover:-translate-y-1 transition-all duration-300">Send Message <i class="fas fa-paper-plane ml-2"></i></button>
                     </div>
                 </form>
             </div>
@@ -254,19 +340,18 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-10">
-        <div class="container mx-auto px-6 text-center text-gray-400">
-             <div class="flex justify-center items-center space-x-6 mb-4">
-                <a href="mailto:Hammadshamim642@gmail.com" class="hover:text-blue-400 transition duration-300"><i class="fas fa-envelope mr-1"></i> Hammadshamim642@gmail.com</a>
-                <span>|</span>
-                <a href="tel:+923482428620" class="hover:text-blue-400 transition duration-300"><i class="fas fa-phone mr-1"></i> +92 348 2428620</a>
+    <footer class="bg-[#0b1120] border-t border-white/5 text-slate-400 py-12">
+        <div class="container mx-auto px-6 text-center">
+             <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8 mb-8 text-lg">
+                <a href="mailto:Hammadshamim642@gmail.com" class="hover:text-cyan-400 transition duration-300"><i class="fas fa-envelope mr-2 text-cyan-500"></i> Hammadshamim642@gmail.com</a>
+                <span class="hidden md:inline text-slate-600">|</span>
+                <a href="tel:+923482428620" class="hover:text-cyan-400 transition duration-300"><i class="fas fa-phone mr-2 text-cyan-500"></i> +92 348 2428620</a>
             </div>
-            <div class="flex justify-center space-x-6 mb-6">
-                <!-- IMPORTANT: Replace '#' with your actual profile URLs -->
-                <a href="#" class="text-2xl hover:text-blue-400 transition duration-300"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="text-2xl hover:text-blue-400 transition duration-300"><i class="fab fa-github"></i></a>
+            <div class="flex justify-center space-x-8 mb-8">
+                <a href="#" class="text-3xl hover:text-cyan-400 hover:-translate-y-1 transition duration-300"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="text-3xl hover:text-cyan-400 hover:-translate-y-1 transition duration-300"><i class="fab fa-github"></i></a>
             </div>
-            <p>&copy; 2025 Hammad Shamim. All Rights Reserved.</p>
+            <p class="text-sm border-t border-white/10 pt-8 max-w-max mx-auto">&copy; 2025 Hammad Shamim. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -326,7 +411,31 @@
             // Initial render placement
             updateCarousel();
         }
+
+        // Scroll Reveal Animation Initialization
+        document.addEventListener("DOMContentLoaded", function() {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            const revealOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, revealOptions);
+
+            reveals.forEach(reveal => {
+                revealOnScroll.observe(reveal);
+            });
+        });
     </script>
 </body>
 </html>
-
